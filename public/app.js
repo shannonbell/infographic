@@ -14,7 +14,7 @@ function Dino(dino) {
           case "height":
             return compareHeight(dino[key]);
           case "diet":
-            return `This specie diet is ${dino[key]}`;
+            return compareDiet(dino[key]);
           case "where":
             return `This specie lived in ${dino[key]}`;
           case "when":
@@ -36,6 +36,14 @@ function compareWeight(dinosaurWeight) {
 function compareHeight(dinosaurHeight) {
   const height = parseInt(dinosaurHeight) * 12 - parseInt(human.height);
   return `This dinosaur is ${height} inches taller than ${human.species}`;
+}
+
+function compareDiet(dinosaurDiet) {
+  const diet =
+    dinosaurDiet.toLowerCase() === human.diet.toLowerCase()
+      ? "the same diet as"
+      : "a different diet then";
+  return `This dinosaur has ${diet} ${human.species}`;
 }
 
 async function getDinoDataFromJSON() {
